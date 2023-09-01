@@ -74,7 +74,7 @@ impl Container {
     /// # Panics
     ///
     /// If debug_assertions enabled and index is > self.max()
-    pub(crate) fn push_unchecked(&mut self, index: u16) {
+    pub fn push_unchecked(&mut self, index: u16) {
         self.store.push_unchecked(index);
         self.ensure_correct_store();
     }
