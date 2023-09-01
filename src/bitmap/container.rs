@@ -24,6 +24,10 @@ impl Container {
         Container { key, store: Store::new() }
     }
 
+    pub fn new_with_array_limit_capacity(key: u16) -> Container {
+        Container { key, store: Store::with_capacity(ARRAY_LIMIT as usize) }
+    }
+
     pub fn full(key: u16) -> Container {
         Container { key, store: Store::full() }
     }
@@ -74,7 +78,7 @@ impl Container {
     /// # Panics
     ///
     /// If debug_assertions enabled and index is > self.max()
-    pub fn push_unchecked(&mut self, index: u16) {
+    pub(crate) fn push_unchecked(&mut self, index: u16) {
         self.store.push_unchecked(index);
         self.ensure_correct_store();
     }
