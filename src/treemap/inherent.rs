@@ -1,6 +1,7 @@
-use std::collections::btree_map::{BTreeMap, Entry};
-use std::iter;
-use std::ops::RangeBounds;
+use alloc::collections::btree_map::{BTreeMap, Entry};
+use alloc::vec::Vec;
+use core::iter;
+use core::ops::RangeBounds;
 
 use crate::RoaringBitmap;
 use crate::RoaringTreemap;
@@ -385,7 +386,7 @@ impl RoaringTreemap {
             + iter.map(|(_, bitmap)| bitmap.len()).sum::<u64>()
     }
 
-    /// Returns the `n`th integer in the set or `None` if `n <= len()`
+    /// Returns the `n`th integer in the set or `None` if `n >= len()`
     ///
     /// # Examples
     ///
