@@ -27,6 +27,10 @@ impl Container {
         Container { key, store: Store::new() }
     }
 
+    pub fn new_with_array_limit_capacity(key: u16) -> Container {
+        Container { key, store: Store::with_capacity(ARRAY_LIMIT as usize) }
+    }
+
     pub fn full(key: u16) -> Container {
         Container { key, store: Store::full() }
     }
